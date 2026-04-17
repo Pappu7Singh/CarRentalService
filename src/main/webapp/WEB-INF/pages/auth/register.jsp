@@ -9,8 +9,11 @@
 </head>
 <body>
     <div class="container d-flex justify-center items-center" style="min-height: 100vh;">
-        <div class="card auth-form" style="width: 100%; margin: 0;">
-            <h2 class="text-center mb-4">Create an Account</h2>
+        <div class="card auth-form" style="width: 100%; margin: 0; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);">
+            <div class="text-center mb-4">
+                <i class="fa-solid fa-user-plus" style="color: var(--primary); font-size: 2.5rem; margin-bottom: 1rem;"></i>
+                <h2>Create an Account</h2>
+            </div>
             
             <% String message = (String) request.getAttribute("message"); 
                if (message != null) { %>
@@ -34,7 +37,7 @@
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" placeholder="Create a strong password" required />
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Register Account</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.1rem; padding: 0.8rem;"><i class="fa-solid fa-check"></i> Register Account</button>
                 
                 <div class="text-center mt-3">
                     <p class="text-muted">Already have an account? <a href="login.jsp">Login here</a></p>

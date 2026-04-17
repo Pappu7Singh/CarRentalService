@@ -21,8 +21,8 @@
 
     <div class="container">
         <div class="page-header">
-            <h2>My Bookings</h2>
-            <a href="${pageContext.request.contextPath}/search" class="btn btn-outline">Book Another Car</a>
+            <h2>My Bookings <i class="fa-solid fa-calendar-days" style="color: var(--primary); margin-left: 0.5rem;"></i></h2>
+            <a href="${pageContext.request.contextPath}/search" class="btn btn-outline"><i class="fa-solid fa-car"></i> Book Another Car</a>
         </div>
 
         <% String message = (String) request.getAttribute("message"); 
@@ -64,7 +64,7 @@
                         <td><span class="badge <%= badgeClass %>"><%= status %></span></td>
                         <td>
                             <% if ("BOOKED".equalsIgnoreCase(status) || "PENDING".equalsIgnoreCase(status)) { %>
-                                <button onclick="confirmCancel(<%= b.getId() %>)" class="btn btn-danger btn-sm">Cancel</button>
+                                <button onclick="confirmCancel(<%= b.getId() %>)" class="btn btn-danger btn-sm"><i class="fa-solid fa-xmark"></i> Cancel</button>
                             <% } else { %>
                                 <span class="text-muted">-</span>
                             <% } %>

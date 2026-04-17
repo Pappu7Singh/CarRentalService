@@ -33,13 +33,13 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
 
-            if ("ADMIN".equals(user.getRole())) {
-                response.sendRedirect("admin/dashboard");
+            if ("ADMIN".equalsIgnoreCase(user.getRole())) {
+                response.sendRedirect(request.getContextPath() + "/admin/dashboard");
             } else {
-                response.sendRedirect("home");
+                response.sendRedirect(request.getContextPath() + "/home");
             }
         } else {
-            response.sendRedirect("login?error=true");
+            response.sendRedirect(request.getContextPath() + "/login?error=true");
         }
     }
 }

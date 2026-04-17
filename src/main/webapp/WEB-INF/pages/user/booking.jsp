@@ -18,8 +18,8 @@
 
     <div class="container">
         <div class="page-header">
-            <h2>Complete Your Booking</h2>
-            <a href="${pageContext.request.contextPath}/search" class="btn btn-outline">Back to Search</a>
+            <h2>Complete Your Booking <i class="fa-solid fa-clipboard-check"></i></h2>
+            <a href="${pageContext.request.contextPath}/search" class="btn btn-outline"><i class="fa-solid fa-arrow-left"></i> Back to Search</a>
         </div>
         
         <div class="card" style="max-width: 600px; margin: 0 auto;">
@@ -29,10 +29,10 @@
             <% } %>
 
             <div class="mb-4" style="padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
-                <h3 class="mb-1"><%= car.getName() %> <span class="badge badge-info" style="font-weight: 500; font-size: 0.8rem; margin-left: 0.5rem;"><%= car.getYear() %></span></h3>
-                <p class="text-muted"><%= car.getBrand() %> &bull; <%= car.getModel() %></p>
-                <div class="mt-2" style="font-size: 1.25rem; font-weight: 600; color: var(--primary);">
-                    $<%= car.getPricePerDay() %> <span style="font-size: 0.875rem; font-weight: 400; color: var(--text-muted);">/ day</span>
+                <h3 class="mb-1"><i class="fa-solid fa-car-side" style="margin-right: 0.5rem; color: var(--primary);"></i><%= car.getName() %> <span class="badge badge-info" style="font-weight: 500; font-size: 0.8rem; margin-left: 0.5rem;"><%= car.getYear() %></span></h3>
+                <p class="text-muted" style="margin-left: 2rem;"><i class="fa-solid fa-tag" style="margin-right: 0.3rem;"></i><%= car.getBrand() %> &bull; <%= car.getModel() %></p>
+                <div class="mt-2" style="font-size: 1.5rem; font-weight: 700; color: var(--primary); text-shadow: 0 0 10px rgba(212, 175, 55, 0.4); margin-left: 2rem;">
+                    $<%= car.getPricePerDay() %> <span style="font-size: 0.9rem; font-weight: 400; color: var(--text-muted); text-shadow: none;">/ day</span>
                 </div>
             </div>
 
@@ -52,8 +52,8 @@
                 </div>
 
                 <div class="mt-4">
-                    <button type="submit" class="btn btn-success" style="width: 100%; font-weight: 600; padding: 1rem;">Confirm & Pay at Counter</button>
-                    <p class="text-center text-muted mt-2" style="font-size: 0.8rem;">No payment required today.</p>
+                    <button type="submit" class="btn btn-success" style="width: 100%; font-weight: 600; padding: 1rem; font-size: 1.1rem;"><i class="fa-solid fa-circle-check"></i> Confirm & Pay at Counter</button>
+                    <p class="text-center text-muted mt-2" style="font-size: 0.85rem;"><i class="fa-solid fa-shield-halved"></i> No payment required today. Secure reservation.</p>
                 </div>
             </form>
         </div>

@@ -21,9 +21,9 @@
 
     <div class="container">
         <div class="page-header">
-            <h2>Manage Cars</h2>
+            <h2>Manage Cars <i class="fa-solid fa-gears" style="color: var(--primary); margin-left: 0.5rem;"></i></h2>
             <a href="${pageContext.request.contextPath}/add-car" class="btn btn-primary d-flex items-center gap-2">
-                <span>➕</span> Add New Car
+                <i class="fa-solid fa-plus"></i> Add New Car
             </a>
         </div>
 
@@ -58,8 +58,8 @@
                         <td>$<%= c.getPricePerDay() %></td>
                         <td>
                             <div class="d-flex gap-2">
-                                <a href="${pageContext.request.contextPath}/edit-car?id=<%= c.getId() %>" class="btn btn-outline btn-sm">Edit</a>
-                                <button onclick="confirmDelete(<%= c.getId() %>)" class="btn btn-danger btn-sm">Delete</button>
+                                <a href="${pageContext.request.contextPath}/edit-car?id=<%= c.getId() %>" class="btn btn-outline btn-sm"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                                <button onclick="confirmDelete(<%= c.getId() %>)" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Delete</button>
                             </div>
                         </td>
                     </tr>

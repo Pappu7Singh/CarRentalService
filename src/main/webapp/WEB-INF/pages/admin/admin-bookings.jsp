@@ -14,8 +14,8 @@
 
     <div class="container">
         <div class="page-header">
-            <h2>All Bookings (Admin)</h2>
-            <a href="${pageContext.request.contextPath}/admin/dashboard" class="btn btn-outline">Back to Dashboard</a>
+            <h2>All Bookings (Admin) <i class="fa-solid fa-list-check" style="color: var(--primary); margin-left: 0.5rem;"></i></h2>
+            <a href="${pageContext.request.contextPath}/admin/dashboard" class="btn btn-outline"><i class="fa-solid fa-arrow-left"></i> Back to Dashboard</a>
         </div>
 
         <div class="table-container">

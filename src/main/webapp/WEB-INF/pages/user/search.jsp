@@ -14,11 +14,11 @@
 
     <div class="container">
         <div class="page-header d-flex flex-wrap justify-between items-center" style="gap: 1rem;">
-            <h2>Find Your Perfect Ride</h2>
+            <h2>Find Your Perfect Ride <i class="fa-solid fa-magnifying-glass" style="font-size: 1.5rem; color: var(--primary);"></i></h2>
             
             <form action="search" method="get" class="d-flex gap-2" style="max-width: 400px; width: 100%;">
-                <input type="text" name="keyword" placeholder="Search by name, brand, model" value="<%= request.getParameter("keyword") != null ? request.getParameter("keyword") : "" %>" style="margin-bottom: 0;" />
-                <button type="submit" class="btn btn-primary" style="white-space: nowrap;">Search</button>
+                <input type="text" name="keyword" placeholder="Search by name, brand, model..." value="<%= request.getParameter("keyword") != null ? request.getParameter("keyword") : "" %>" style="margin-bottom: 0;" />
+                <button type="submit" class="btn btn-primary" style="white-space: nowrap;"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
             </form>
         </div>
 
@@ -60,9 +60,9 @@
                         </td>
                         <td>
                             <% if (isAvailable) { %>
-                                <a href="book-car?id=<%= c.getId() %>" class="btn btn-success btn-sm">Book Now</a>
+                                <a href="book-car?id=<%= c.getId() %>" class="btn btn-success btn-sm"><i class="fa-solid fa-key"></i> Book Now</a>
                             <% } else { %>
-                                <button disabled class="btn btn-outline btn-sm" style="cursor: not-allowed; opacity: 0.5;">Book Now</button>
+                                <button disabled class="btn btn-outline btn-sm" style="cursor: not-allowed; opacity: 0.5;"><i class="fa-solid fa-ban"></i> Unavailable</button>
                             <% } %>
                         </td>
                     </tr>
