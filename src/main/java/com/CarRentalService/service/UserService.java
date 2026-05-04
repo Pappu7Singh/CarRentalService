@@ -57,4 +57,27 @@ public class UserService {
         }
         return null;
     }
+
+    public User getUserByEmail(String email) {
+        try {
+            Connection con = DBConfig.getConnection();
+            String sql = "SELECT * FROM users WHERE email=?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                User user = new User();
+                user.setId(rs.getInt("id"));
+                user.setName(rs.getString("name"));
+                user.setEmail(rs.getString("email"));
+                user.setPassword(rs.getString("password"));
+                user.setRole(rs.getString("role"));
+                return user;
+            }
+        } catch (Exception e) {
+            System.out.println("Get User Error: " + e.getMessage());
+        }
+        return null;
+    }
 }

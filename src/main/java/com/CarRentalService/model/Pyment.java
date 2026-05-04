@@ -1,5 +1,5 @@
 package com.CarRentalService.model;
 
-public class Payment {
+public class Pyment {
 
 }

@@ -564,3 +564,34 @@ tbody tr:last-child td {
         align-items: flex-start;
     }
 }
+
+/* Form Validation */
+.invalid-feedback {
+    display: none;
+    color: var(--danger);
+    font-size: 0.85rem;
+    margin-top: 0.4rem;
+    animation: fadeIn 0.3s ease-in-out;
+    font-weight: 500;
+}
+
+.is-invalid {
+    border-color: var(--danger) !important;
+    background-color: rgba(239, 68, 68, 0.05) !important;
+}
+
+.is-invalid:focus {
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.5) !important;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

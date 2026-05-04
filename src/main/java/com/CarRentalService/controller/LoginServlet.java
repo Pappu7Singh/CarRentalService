@@ -15,6 +15,15 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        String error = request.getParameter("error");
+        if ("invalid".equals(error)) {
+            request.setAttribute("message", "Incorrect email or password. Please try again.");
+        } else if ("empty".equals(error)) {
+            request.setAttribute("message", "Email and password are required.");
+        } else if ("true".equals(error)) {
+            request.setAttribute("message", "An error occurred during login. Please try again.");
+        }
+
         request.getRequestDispatcher("WEB-INF/pages/auth/login.jsp")
                .forward(request, response);
     }
@@ -26,10 +35,40 @@ public class LoginServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        UserService service = new UserService();
-        User user = service.login(email, password);
+        // Server-side validation
+        boolean hasError = false;
+        
+        if (email == null || email.trim().isEmpty()) {
+            request.setAttribute("email_error", "Email is required");
+            hasError = true;
+        } else if (!email.matches("^\\S+@\\S+\\.\\S+$")) {
+            request.setAttribute("email_error", "Enter a valid email");
+            hasError = true;
+        }
+        
+        if (password == null || password.trim().isEmpty()) {
+            request.setAttribute("password_error", "Password is required");
+            hasError = true;
+        }
 
-        if (user != null) {
+        if (hasError) {
+            request.setAttribute("email", email);
+            request.getRequestDispatcher("WEB-INF/pages/auth/login.jsp").forward(request, response);
+            return;
+        }
+
+        UserService service = new UserService();
+        User user = service.getUserByEmail(email);
+
+        if (user == null) {
+            request.setAttribute("email_error", "Email not found");
+            request.setAttribute("email", email);
+            request.getRequestDispatcher("WEB-INF/pages/auth/login.jsp").forward(request, response);
+        } else if (!user.getPassword().equals(password)) {
+            request.setAttribute("password_error", "Incorrect password");
+            request.setAttribute("email", email);
+            request.getRequestDispatcher("WEB-INF/pages/auth/login.jsp").forward(request, response);
+        } else {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
 
@@ -38,8 +77,6 @@ public class LoginServlet extends HttpServlet {
             } else {
                 response.sendRedirect(request.getContextPath() + "/home");
             }
-        } else {
-            response.sendRedirect(request.getContextPath() + "/login?error=true");
         }
     }
 }
